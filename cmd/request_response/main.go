@@ -9,7 +9,7 @@ import (
 )
 
 func main() {
-	http.HandleFunc("/get-updates", middleware.Request(getUpdates))
+	http.HandleFunc("/get-updates", middleware.Func(getUpdates))
 
 	slog.Info("server started", "port", "5432")
 
@@ -22,5 +22,5 @@ func getUpdates(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(data)
+	slog.Error(json.NewEncoder(w).Encode(data).Error())
 }
