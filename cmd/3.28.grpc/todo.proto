@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package todoPackage;
+
+// this needs to be installed on your local machine
+// see: https://stackoverflow.com/a/60270506
+// and this: https://stackoverflow.com/a/75067897
+// import "google/protobuf/timestamp.proto"
+
+option go_package = "backend.engineering/gen";
+
+// In a package there may be multiple services.
+service Todo {
+	// request-reponse model
+	rpc createTodo(TodoRequest) returns (TodoItem);
+	rpc readTodos(voidRequest) returns (TodoItems);
+}
+
+message voidRequest {}
+
+message TodoRequest {
+	string text = 1;
+}
+
+message TodoItem {
+	int32 id = 1;
+	string text = 2;
+}
+
+message TodoItems {
+	// array
+	repeated TodoItem items = 1;
+}
