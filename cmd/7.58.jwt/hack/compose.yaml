@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15
+    container_name: jwt_demo_db
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: jwt_demo
+    ports:
+      - "5432:5432"
+    command: >
+      bash -c "
+        docker-entrypoint.sh postgres &
+        sleep 5 &&
+        psql -U user -d jwt_demo -c '
+          CREATE TABLE IF NOT EXISTS users (
+            id SERIAL PRIMARY KEY,
+            uname TEXT NOT NULL UNIQUE,
+            fullname TEXT NOT NULL,
+            pass TEXT NOT NULL,
+            token TEXT
+          );'
+        wait
+      "
