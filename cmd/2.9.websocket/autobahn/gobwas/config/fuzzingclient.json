@@ -1,0 +1,19 @@
+{
+  "cases": [ "*" ],
+  "exclude-cases": [],
+  "exclude-agent-cases": {},
+  "outdir": "./reports",
+  "options": {
+    "failByDrop": false
+  },
+  "servers": [
+    {
+      "agent": "simple",
+      "url": "ws://host.docker.internal:9004/ws"
+    },
+    {
+      "agent": "wsflate",
+      "url": "ws://host.docker.internal:9004/wsflate"
+    }
+  ]
+}

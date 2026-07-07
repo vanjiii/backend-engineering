@@ -1,0 +1,13 @@
+{
+  "cases": ["*"],
+  "exclude-cases": [],
+  "exclude-agent-cases": {},
+  "outdir": "/reports",
+  "options": {"failByDrop": false},
+  "servers": [
+    {
+      "agent": "go-gorilla-chatgpt",
+      "url": "ws://host.docker.internal:9002/ws"
+    }
+  ]
+}
